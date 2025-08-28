@@ -1,0 +1,123 @@
+import js from '@eslint/js';
+import typescript from '@typescript-eslint/eslint-plugin';
+import typescriptParser from '@typescript-eslint/parser';
+import prettier from 'eslint-plugin-prettier';
+import prettierConfig from 'eslint-config-prettier';
+
+export default [
+  js.configs.recommended,
+  {
+    files: ['**/*.{ts,js}'],
+    languageOptions: {
+      parser: typescriptParser,
+      parserOptions: {
+        ecmaVersion: 2022,
+        sourceType: 'module',
+        project: './tsconfig.json',
+      },
+      globals: {
+        process: 'readonly',
+        console: 'readonly',
+        Buffer: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+        global: 'readonly',
+        NodeJS: 'readonly',
+      },
+    },
+    plugins: {
+      '@typescript-eslint': typescript,
+      prettier,
+    },
+    rules: {
+      // TypeScript 規則
+      '@typescript-eslint/no-unused-vars': ['error', { 
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_' 
+      }],
+      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/explicit-function-return-type': 'off',
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+      '@typescript-eslint/no-inferrable-types': 'off',
+      '@typescript-eslint/no-non-null-assertion': 'warn',
+      '@typescript-eslint/prefer-const': 'error',
+      '@typescript-eslint/prefer-readonly': 'error',
+      '@typescript-eslint/prefer-nullish-coalescing': 'error',
+      '@typescript-eslint/prefer-optional-chain': 'error',
+      '@typescript-eslint/no-floating-promises': 'error',
+      '@typescript-eslint/await-thenable': 'error',
+      '@typescript-eslint/no-misused-promises': 'error',
+      '@typescript-eslint/require-await': 'error',
+      
+      // 一般 JavaScript 規則
+      'no-console': 'warn',
+      'no-debugger': 'error',
+      'no-alert': 'error',
+      'no-eval': 'error',
+      'no-implied-eval': 'error',
+      'no-new-func': 'error',
+      'no-script-url': 'error',
+      'no-return-await': 'error',
+      'prefer-const': 'error',
+      'prefer-template': 'error',
+      'no-var': 'error',
+      'object-shorthand': 'error',
+      'prefer-arrow-callback': 'error',
+      
+      // 程式碼風格
+      'max-len': ['error', { 
+        code: 100, 
+        ignoreUrls: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true 
+      }],
+      'max-lines': ['warn', { max: 300 }],
+      'max-lines-per-function': ['warn', { max: 50 }],
+      'complexity': ['warn', 10],
+      'max-depth': ['error', 4],
+      'max-nested-callbacks': ['error', 3],
+      'max-params': ['error', 4],
+      
+      // 命名規範
+      'camelcase': ['error', { properties: 'never' }],
+      'new-cap': 'error',
+      'no-underscore-dangle': ['error', { 
+        allow: ['_id', '__dirname', '__filename'] 
+      }],
+      
+      // 安全性
+      'no-eval': 'error',
+      'no-implied-eval': 'error',
+      'no-new-func': 'error',
+      'no-script-url': 'error',
+      
+      // Prettier 整合
+      'prettier/prettier': 'error',
+      
+      // 錯誤處理
+      'no-throw-literal': 'error',
+      'prefer-promise-reject-errors': 'error',
+      
+      // Node.js 特定
+      'no-process-exit': 'error',
+      'no-sync': 'warn',
+    },
+  },
+  {
+    files: ['**/*.test.{ts,js}', '**/*.spec.{ts,js}'],
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-non-null-assertion': 'off',
+      'no-console': 'off',
+      'max-lines-per-function': 'off',
+    },
+  },
+  {
+    files: ['scripts/**/*.{ts,js}'],
+    rules: {
+      'no-console': 'off',
+      'no-process-exit': 'off',
+    },
+  },
+  prettierConfig,
+];
