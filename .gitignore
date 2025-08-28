@@ -1,5 +1,5 @@
 # ==========================================
-# Claude Cloud - .gitignore 配置
+# Claude Cloud - .gitignore 配置 (Enhanced)
 # ==========================================
 # 此檔案定義了不應被 Git 追蹤的檔案和目錄
 # 確保敏感資訊不會意外提交到版本控制系統
@@ -12,6 +12,8 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.env.vault
+.env.encrypted
 
 # === 憑證與金鑰 ===
 *.pem
@@ -30,6 +32,17 @@ service-account*.json
 google-credentials*.json
 aws-credentials*
 gcp-key*.json
+.anthropic-key
+.claude-config
+*-secrets.yaml
+*-secrets.json
+
+# === 雲端平台配置 ===
+.vercel/
+.netlify/
+.railway/
+.render/
+.fly/
 
 # === 系統與OS檔案 ===
 .DS_Store
@@ -68,6 +81,12 @@ lerna-debug.log*
 .yarn/unplugged
 .yarn/build-state.yml
 .yarn/install-state.gz
+
+# === 套件管理器鎖定檔案（視團隊決策） ===
+# 注意：這些檔案通常應該被提交，但如果有特殊需求可以忽略
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
 
 # === Python 生態系統 ===
 __pycache__/
@@ -110,6 +129,8 @@ target/
 .tmp/
 tmp/
 temp/
+coverage/
+.nyc_output/
 
 # === 測試與覆蓋率 ===
 coverage/
@@ -127,6 +148,8 @@ nosetests.xml
 coverage.xml
 *.cover
 .hypothesis/
+test-report.xml
+junit.xml
 
 # === 日誌檔案 ===
 logs/
@@ -136,6 +159,9 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
+combined.log
+error.log
+access.log
 
 # === 資料庫檔案 ===
 *.sqlite
@@ -147,6 +173,8 @@ lerna-debug.log*
 data/
 *.dump
 *.sql.gz
+postgres_data/
+mysql_data/
 
 # === 快取與暫存檔案 ===
 .cache/
@@ -179,11 +207,12 @@ application_default_credentials.json
 terraform.tfvars
 terraform.tfvars.json
 
-# === Docker ===
+# === 容器化 ===
 .dockerignore
 docker-compose.override.yml
 .docker/
 Dockerfile.local
+docker-data/
 
 # === 備份檔案 ===
 *.backup
@@ -212,24 +241,19 @@ hs_err_pid*
 *.out
 *.app
 
-# === 套件管理器 ===
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-Pipfile.lock
-poetry.lock
-
 # === 本地開發配置 ===
 .local/
 .config/local/
 local.json
 local.yml
 local.yaml
+dev-override.json
 
 # === 監控與分析 ===
 .sentry-native/
 .sonarqube/
 sonar-project.properties
+lighthouse-results/
 
 # === AI 和機器學習 ===
 *.model
@@ -240,6 +264,7 @@ sonar-project.properties
 models/
 checkpoints/
 tensorboard_logs/
+wandb/
 
 # === 媒體檔案（大型） ===
 *.mp4
@@ -263,30 +288,60 @@ tensorboard_logs/
 # BigQuery 查詢結果
 *.json.gz
 query_results/
+bigquery_cache/
 
 # Claude 對話記錄
 conversations/
 claude_logs/
+ai_interactions/
 
 # 臨時檔案
 scratch/
 playground/
 experiments/
+temp_files/
 
 # 使用者上傳檔案
 uploads/
 user_files/
+static_uploads/
 
 # === 安全掃描結果 ===
 security_scan_results/
 vulnerability_report.json
 .snyk
+trivy-results.json
+bandit-report.json
 
 # === 效能分析 ===
 .profile
 *.prof
 *.heap
 *.cpuprofile
+performance_reports/
+
+# === 開發工具產生檔案 ===
+.vite/
+.turbo/
+.swc/
+.tsbuildinfo
+.eslintcache
+
+# === 新增：現代開發工具 ===
+# Bun
+bun.lockb
+
+# Deno
+deno.lock
+
+# Rush
+common/temp/
+rush.json
+
+# Nx
+.nx/
+dist/
+tmp/
 
 # ==========================================
 # 重要提醒：
@@ -294,4 +349,5 @@ vulnerability_report.json
 # 2. 新增敏感檔案類型時及時加入
 # 3. 使用 'git status' 確認沒有敏感檔案被追蹤
 # 4. 團隊成員都應了解這些忽略規則
+# 5. 定期執行 git clean -fdx 清理未追蹤檔案
 # ==========================================
