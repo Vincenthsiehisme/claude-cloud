@@ -1,19 +1,297 @@
-# 環境變數
+# ==========================================
+# Claude Cloud - .gitignore 配置
+# ==========================================
+# 此檔案定義了不應被 Git 追蹤的檔案和目錄
+# 確保敏感資訊不會意外提交到版本控制系統
+# ==========================================
+
+# === 環境變數與機密資訊 ===
 .env
 .env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# 系統檔案
+# === 憑證與金鑰 ===
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa*
+id_ed25519*
+*.pub
+credentials.json
+service-account*.json
+google-credentials*.json
+aws-credentials*
+gcp-key*.json
+
+# === 系統與OS檔案 ===
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
 
-# IDE / 編輯器
+# === IDE 與編輯器 ===
 .idea/
 .vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-project
+*.sublime-workspace
 
-# Python / Node.js 常見
-__pycache__/
+# === Node.js 生態系統 ===
 node_modules/
-.venv/
-dist/
-build/
-coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnpm-store/
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
 
+# === Python 生態系統 ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# === 建構與編譯產物 ===
+build/
+dist/
+out/
+target/
+.next/
+.nuxt/
+.cache/
+.parcel-cache/
+.tmp/
+tmp/
+temp/
+
+# === 測試與覆蓋率 ===
+coverage/
+*.lcov
+.nyc_output/
+.jest/
+test-results/
+playwright-report/
+coverage-ts/
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# === 日誌檔案 ===
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# === 資料庫檔案 ===
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+data/
+*.dump
+*.sql.gz
+
+# === 快取與暫存檔案 ===
+.cache/
+.eslintcache
+.stylelintcache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# === 雲端服務配置 ===
+# AWS
+.aws/
+aws-credentials
+.elasticbeanstalk/
+
+# Google Cloud
+.gcloud/
+gcloud-credentials.json
+application_default_credentials.json
+
+# Azure
+.azure/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+terraform.tfvars
+terraform.tfvars.json
+
+# === Docker ===
+.dockerignore
+docker-compose.override.yml
+.docker/
+Dockerfile.local
+
+# === 備份檔案 ===
+*.backup
+*.bak
+*.old
+*.orig
+*.rej
+*.tmp
+*~.nib
+local.properties
+
+# === 編譯器與運行時 ===
+# Java
+*.class
+*.war
+*.ear
+*.jar
+hs_err_pid*
+
+# C/C++
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+*.out
+*.app
+
+# === 套件管理器 ===
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+Pipfile.lock
+poetry.lock
+
+# === 本地開發配置 ===
+.local/
+.config/local/
+local.json
+local.yml
+local.yaml
+
+# === 監控與分析 ===
+.sentry-native/
+.sonarqube/
+sonar-project.properties
+
+# === AI 和機器學習 ===
+*.model
+*.pkl
+*.h5
+*.pb
+*.onnx
+models/
+checkpoints/
+tensorboard_logs/
+
+# === 媒體檔案（大型） ===
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.flv
+*.webm
+*.mp3
+*.wav
+*.flac
+*.aac
+
+# === 文件與設計 ===
+*.psd
+*.ai
+*.sketch
+*.fig
+
+# === 專案特定忽略 ===
+# BigQuery 查詢結果
+*.json.gz
+query_results/
+
+# Claude 對話記錄
+conversations/
+claude_logs/
+
+# 臨時檔案
+scratch/
+playground/
+experiments/
+
+# 使用者上傳檔案
+uploads/
+user_files/
+
+# === 安全掃描結果 ===
+security_scan_results/
+vulnerability_report.json
+.snyk
+
+# === 效能分析 ===
+.profile
+*.prof
+*.heap
+*.cpuprofile
+
+# ==========================================
+# 重要提醒：
+# 1. 定期檢查此檔案是否需要更新
+# 2. 新增敏感檔案類型時及時加入
+# 3. 使用 'git status' 確認沒有敏感檔案被追蹤
+# 4. 團隊成員都應了解這些忽略規則
+# ==========================================
