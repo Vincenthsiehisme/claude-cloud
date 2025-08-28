@@ -1,0 +1,19 @@
+# 環境變數
+.env
+.env.*
+
+# 系統檔案
+.DS_Store
+
+# IDE / 編輯器
+.idea/
+.vscode/
+
+# Python / Node.js 常見
+__pycache__/
+node_modules/
+.venv/
+dist/
+build/
+coverage/
+
