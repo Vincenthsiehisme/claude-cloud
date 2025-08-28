@@ -1,10 +1,190 @@
-# EditorConfig helps developers define and maintain consistent coding styles.
+# ==========================================
+# Claude Cloud - EditorConfig 配置
+# ==========================================
+# EditorConfig 幫助開發者在不同編輯器和 IDE 中
+# 維持一致的程式碼風格
+# 
+# 更多資訊: https://editorconfig.org
+# ==========================================
 
+# 表示這是專案根目錄的配置檔案
 root = true
 
+# === 全域設定 ===
 [*]
 charset = utf-8
 end_of_line = lf
 insert_final_newline = true
+trim_trailing_whitespace = true
 indent_style = space
 indent_size = 2
+
+# === JavaScript/TypeScript ===
+[*.{js,jsx,ts,tsx}]
+indent_size = 2
+quote_type = single
+max_line_length = 100
+
+# === JSON 檔案 ===
+[*.{json,jsonc}]
+indent_size = 2
+
+# === HTML 相關 ===
+[*.{html,htm}]
+indent_size = 2
+
+# === CSS/SCSS/LESS ===
+[*.{css,scss,sass,less}]
+indent_size = 2
+
+# === Vue.js 單檔案元件 ===
+[*.vue]
+indent_size = 2
+
+# === React Native ===
+[*.{jsx,tsx}]
+indent_size = 2
+
+# === Python ===
+[*.py]
+indent_size = 4
+max_line_length = 88
+
+# === SQL 檔案 ===
+[*.sql]
+indent_size = 2
+trim_trailing_whitespace = true
+
+# === YAML 檔案 ===
+[*.{yml,yaml}]
+indent_size = 2
+trim_trailing_whitespace = true
+
+# === XML 檔案 ===
+[*.{xml,svg}]
+indent_size = 2
+
+# === Markdown 檔案 ===
+[*.{md,markdown}]
+trim_trailing_whitespace = false
+indent_size = 2
+
+# === 配置檔案 ===
+[*.{toml,ini}]
+indent_size = 4
+
+# === Shell 腳本 ===
+[*.{sh,bash,zsh}]
+indent_size = 2
+end_of_line = lf
+
+# === Docker 檔案 ===
+[{Dockerfile,Dockerfile.*,*.dockerfile}]
+indent_size = 4
+
+# === Makefile ===
+[{Makefile,makefile,*.mk}]
+indent_style = tab
+indent_size = 4
+
+# === Git 相關檔案 ===
+[.gitignore]
+indent_size = 2
+trim_trailing_whitespace = true
+
+[.gitattributes]
+indent_size = 2
+trim_trailing_whitespace = true
+
+# === GitHub 相關檔案 ===
+[.github/**/*.{yml,yaml}]
+indent_size = 2
+
+# === 套件管理器配置檔案 ===
+[package.json]
+indent_size = 2
+
+[{package-lock.json,yarn.lock,pnpm-lock.yaml}]
+indent_size = 2
+
+# === 建構工具配置 ===
+[*.{webpack,rollup,vite}.{js,ts,config.js,config.ts}]
+indent_size = 2
+
+[{tsconfig,jsconfig}.json]
+indent_size = 2
+
+[.eslintrc*]
+indent_size = 2
+
+[.prettierrc*]
+indent_size = 2
+
+# === 測試檔案 ===
+[*.{test,spec}.{js,ts,jsx,tsx}]
+indent_size = 2
+max_line_length = 120
+
+# === 環境配置檔案 ===
+[.env*]
+indent_size = 2
+trim_trailing_whitespace = true
+
+# === 雲端配置檔案 ===
+# Terraform
+[*.{tf,tfvars}]
+indent_size = 2
+
+# Kubernetes
+[*.{k8s,kube}.{yml,yaml}]
+indent_size = 2
+
+# Docker Compose
+[docker-compose*.{yml,yaml}]
+indent_size = 2
+
+# === CI/CD 檔案 ===
+[.github/workflows/*.{yml,yaml}]
+indent_size = 2
+
+[.gitlab-ci.yml]
+indent_size = 2
+
+# === 特殊檔案處理 ===
+# 證書檔案（通常不應編輯）
+[*.{crt,pem,key}]
+insert_final_newline = false
+trim_trailing_whitespace = false
+
+# 二進位檔案（通常不應編輯）
+[*.{jpg,jpeg,png,gif,ico,pdf,zip,tar,gz}]
+insert_final_newline = false
+trim_trailing_whitespace = false
+
+# === 專案特定配置 ===
+# Claude 配置檔案
+[claude.md]
+indent_size = 2
+trim_trailing_whitespace = true
+max_line_length = 80
+
+# BigQuery SQL 檔案
+[*.bq.sql]
+indent_size = 2
+max_line_length = 100
+
+# ==========================================
+# 配置說明：
+# 
+# charset: 檔案字符編碼
+# end_of_line: 換行符類型 (lf=Unix, crlf=Windows, cr=Mac)
+# insert_final_newline: 檔案結尾是否插入換行符
+# trim_trailing_whitespace: 是否移除行尾空白
+# indent_style: 縮排風格 (space=空格, tab=製表符)
+# indent_size: 縮排大小
+# max_line_length: 最大行長度（某些編輯器支持）
+# 
+# 支援的編輯器：
+# VS Code, IntelliJ IDEA, Sublime Text, Atom, 
+# Vim, Emacs, Visual Studio, 等等
+# ==========================================
